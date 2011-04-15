@@ -59,11 +59,13 @@ module WillPaginate
       end
       
       def previous_page
-        previous_or_next_page(@collection.previous_page, @options[:previous_label], 'previous_page')
+        previous_label = I18n.translate!('will_paginate.previous_label') rescue @options[:previous_label]
+        previous_or_next_page(@collection.previous_page, previous_label, 'previous_page')
       end
       
       def next_page
-        previous_or_next_page(@collection.next_page, @options[:next_label], 'next_page')
+        next_label = I18n.translate!('will_paginate.next_label') rescue @options[:next_label]
+        previous_or_next_page(@collection.next_page, next_label, 'next_page')
       end
       
       def previous_or_next_page(page, text, classname)
